@@ -1,0 +1,26 @@
+subfinder -d example.com -silent > subs.txt
+subfinder -d example.com -silent \
+&& amass enum -passive -d example.com -silent >> subs.txt
+
+Filter Live Subdomains (THIS IS KEY)
+Use httpx (industry standard)
+cat subs.txt | httpx -silent -threads 100 > live.txt
+
+
+
+One-Liner (Enumeration → Live Only)
+
+If you want speed over perfection:
+
+subfinder -d example.com -silent | httpx -silent > live.txt
+
+
+ADVANCED FILTERING (Highly Recommended)
+Filter only interesting status codes
+httpx -status-code -silent | grep -E "200|301|302|403"
+
+Include title + tech fingerprinting
+httpx -title -tech-detect -silent
+
+Save JSON for automation
+httpx -json -silent > live.json
