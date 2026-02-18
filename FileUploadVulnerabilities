@@ -1,0 +1,125 @@
+FIND ALL UPLOAD ENDPOINTS
+Profile picture / avatar
+Attachments
+Resume / KYC uploads
+Import / export features
+CSV / Excel uploads
+ZIP / backup uploads
+Support ticket uploads
+Drag-and-drop JS uploads
+API endpoints (/api/upload, /media, /files)
+Mobile app uploads
+
+IDENTIFY TECH STACK
+Web server: Apache / Nginx / IIS
+Backend: PHP / ASP.NET / Java / Python / Node
+OS: Linux / Windows
+Check headers, error messages, stack traces
+
+EXTENSION VALIDATION TESTS
+shell.php
+shell.php.jpg
+shell.php;.jpg
+shell.php%00.jpg
+shell.php.
+shell.PHp
+shell.phtml
+shell.php5
+shell.phar
+shell.jspx
+shell.asp;.jpg
+
+Unicode / encoding variants
+
+MIME TYPE BYPASS
+Modify Content-Type to image/jpeg
+Upload non-image content
+Check if server trusts client headers
+
+MAGIC BYTE / POLYGLOT FILES
+GIF89a + PHP payload
+JPEG header + script payload
+Check if file passes validation AND executes
+
+FILE EXECUTION TEST
+Access uploaded file via browser
+Check if file is rendered or downloaded
+Try executing parameters (e.g. ?cmd=id)
+
+UPLOAD DIRECTORY PERMISSIONS
+Check if upload directory allows execution
+PHP enabled in /uploads
+IIS script execution allowed
+Nginx fastcgi applies to upload dir
+
+FILENAME HANDLING
+Try overwriting files:
+index.php
+.htaccess
+.user.ini
+web.config
+
+Try path traversal:
+../../shell.php
+
+SPECIAL FILE UPLOADS
+.htaccess (enable PHP execution)
+.user.ini (override PHP config)
+.phar (PHP deserialization)
+.svg (XSS)
+.zip (Zip Slip)
+.json (deserialization)
+.log (log poisoning)
+
+ZIP / ARCHIVE TESTING
+Path traversal inside ZIP
+Overwrite files via extraction
+Symlinks inside ZIP
+Zip Slip payloads
+
+IMAGE PROCESSING ABUSE
+ImageMagick
+ExifTool
+FFmpeg
+Metadata injection
+Malformed images
+Known CVEs
+
+FILE UPLOAD + LFI CHAIN
+Upload file
+Find LFI
+Include uploaded file
+Check for code execution
+
+TEMPORARY FILE ISSUES
+Interrupt uploads
+Race conditions
+Partial file execution
+
+RESPONSE ANALYSIS
+Look for file paths
+Renaming logic
+Hashing behavior
+Validation error messages
+
+CLIENT-SIDE BYPASS
+Disable JavaScript validation
+Modify requests in Burp
+Replay blocked uploads
+
+API / MOBILE UPLOADS
+Test API separately from web
+Check for missing validation
+Check object storage direct uploads
+
+CLOUD STORAGE ISSUES
+Public buckets
+Signed URL abuse
+Stored XSS in uploaded files
+
+POST-UPLOAD ABUSE
+File enumeration
+
+IDOR on file access
+Download other users’ files
+Reuse file IDs
